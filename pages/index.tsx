@@ -4,7 +4,11 @@ import Image from 'next/image'
 
 const Home: NextPage = () => {
   return (
-    <div className="text-bold underline text-2xl bg-black text-white transition duration-500 hover:text-purple-500 ">Hello world</div>
+    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+      <Head>
+        <title>Nitflex-V2</title>
+      </Head>
+    </div>
   )
 }
 
