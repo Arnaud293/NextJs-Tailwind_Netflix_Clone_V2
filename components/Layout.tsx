@@ -2,15 +2,15 @@ import React from 'react';
 import 'tailwindcss/tailwind.css';
 import { NavBar } from './';
 
-type Props = {
+type ChildrenProps = {
     children?: React.ReactNode
 }
 
-const Layout = (props: Props) => {
+const Layout:React.FC<ChildrenProps> = ({children}) => {
   return (
     <>
         <NavBar />
-        {props}
+        {children}
     </>
   )
 }
