@@ -21,7 +21,7 @@ export const navLinks = [
     },
     {
         id: 3,
-        link : 'Tv Shows'
+        link : 'Tv'
     },
     {
         id: 4,
