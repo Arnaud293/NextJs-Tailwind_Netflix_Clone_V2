@@ -15,7 +15,7 @@ const NavBar:React.FC = ({}: Props) => {
         <img src={logo[0].imgUrl} alt="logo" className='h-[50px] mr-10' />
         <ul className='md:flex gap-4 hidden'>
           {navLinks.map((item) => (
-            <li className='text-white transition duration-300 hover:text-red-500 cursor-pointer'>{item.link}</li>
+            <li key={item.id} className='text-white transition duration-300 hover:text-red-500 cursor-pointer'>{item.link}</li>
           ))}
         </ul>
         <p className='text-white flex md:hidden items-center'>Pacourir <MdArrowDropDown/></p>
