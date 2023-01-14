@@ -10,12 +10,12 @@ type Props = {}
 
 const NavBar:React.FC = ({}: Props) => {
   return (
-    <nav className='flex justify-between p-2 fixed bg-black w-full z-10'>
+    <nav className='flex justify-between p-2 fixed backdrop:blur-1 bg-gradient-to-t from-black to-transparent w-full z-10'>
       <div className="flex w-[50%] items-center">
         <img src={logo[0].imgUrl} alt="logo" className='h-[50px] mr-10' />
         <ul className='md:flex gap-4 hidden'>
           {navLinks.map((item) => (
-            <li key={item.id} className='text-white transition duration-300 hover:text-red-500 cursor-pointer'>{item.link}</li>
+            <li key={item.id} className='text-white transition duration-300 hover:text-red-500 active:text-red-500 cursor-pointer'>{item.link}</li>
           ))}
         </ul>
         <p className='text-white flex md:hidden items-center'>Pacourir <MdArrowDropDown/></p>
