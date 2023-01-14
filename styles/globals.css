@@ -8,5 +8,5 @@
     box-sizing: border-box;
     font-family: sans-serif;
     scroll-behavior: smooth;
-    background: rgb(27, 27, 27);
-  }
+    /* background: rgb(27, 27, 27); */
+}
