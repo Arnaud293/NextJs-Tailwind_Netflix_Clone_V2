@@ -17,7 +17,7 @@ const Banner:React.FC = () => {
   const [trending, setTrending] = useState<TrendingsDataMovies | TrendingsDataTv | null>(null);
 
   const background = {
-    backgroundImage : `url("https://image.tmdb.org/t/p/original/${trending?.poster_path}")`,
+    backgroundImage : `url("https://image.tmdb.org/t/p/original/${trending?.backdrop_path}")`,
     backgroundSize : "cover",
     backgroundPosition: "center",
   }
@@ -27,7 +27,7 @@ const Banner:React.FC = () => {
       const req  = await axios.get(requests.getTrending);
       const data: (TrendingsDataMovies| TrendingsDataTv)[] = req.data.results;
       setTrending(
-        data.filter(el => el.poster_path !== null)[
+        data?.filter(el => el.backdrop_path !== null)[
           Math.floor(Math.random() * data.length - 1)
         ]
       )
