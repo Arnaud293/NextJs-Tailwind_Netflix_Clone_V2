@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { logo, navLinks } from '../constants';
 
@@ -9,8 +9,19 @@ import { MdArrowDropDown } from 'react-icons/md';
 type Props = {}
 
 const NavBar:React.FC = ({}: Props) => {
+
+  const [blackNavBar, setBlackNavBar] = useState(false);
+    
+  const navColorTransition = () => {
+    window.scrollY >= 50 ? setBlackNavBar(true) : setBlackNavBar(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', navColorTransition);
+},[]);
+
   return (
-    <nav className='flex justify-between p-2 fixed backdrop:blur-1 bg-gradient-to-t from-black to-transparent w-full z-10'>
+    <nav className={`flex justify-between p-2 fixed backdrop:blur-1  ${blackNavBar ? "bg-black" : "bg-gradient-to-t from-black to-transparent"} w-full z-10`}>
       <div className="flex w-[50%] items-center">
         <img src={logo[0].imgUrl} alt="logo" className='sm:block hidden h-[50px] mr-10' />
         <img src={logo[1].imgUrl} alt="logo" className='sm:hidden block h-[50px] mr-10' />
