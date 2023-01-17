@@ -1,10 +1,14 @@
 import React from 'react'
+import { Banner, Rows } from '../../components'
 
 type Props = {}
 
 function index({}: Props) {
   return (
-    <div>Tv</div>
+    <>
+      <Banner />
+      <Rows />
+    </>
   )
 }
 
