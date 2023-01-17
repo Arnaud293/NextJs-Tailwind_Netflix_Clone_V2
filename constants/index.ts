@@ -60,20 +60,12 @@ export const MoviesRequests = [
         fetchUrl: requests.getPopularMovies,
     },
     {
-        title: 'Latest movies :',
-        fetchUrl: requests.getLatestMovies,
-    },
-    {
         title: 'Top Rated movies now :',
         fetchUrl: requests.getTopRatedMovies,
     }
 ]
 export const TvRequests = [
     
-    {
-        title: 'Latest TV shows :',
-        fetchUrl: requests.getLatestTvShow,
-    },
     {
         title: 'Popular TV shows now :',
         fetchUrl: requests.getPopularTvShow,
