@@ -36,3 +36,8 @@ export interface TrendingsDataTv {
     origin_country: Array<string>,
 
 }
+
+export interface request {
+    title: string,
+    fetchUrl: string,
+}
