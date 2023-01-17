@@ -6,6 +6,8 @@ import { BsBell } from 'react-icons/bs';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { MdArrowDropDown } from 'react-icons/md';
 
+import Link from 'next/link';
+
 type Props = {}
 
 const NavBar:React.FC = ({}: Props) => {
@@ -26,8 +28,10 @@ const NavBar:React.FC = ({}: Props) => {
         <img src={logo[0].imgUrl} alt="logo" className='sm:block hidden h-[50px] mr-10' />
         <img src={logo[1].imgUrl} alt="logo" className='sm:hidden block h-[50px] mr-10' />
         <ul className='md:flex gap-4 hidden'>
-          {navLinks.map((item) => (
-            <li key={item.id} className='text-white transition duration-300 hover:text-red-500 active:text-red-500 cursor-pointer'>{item.link}</li>
+          {navLinks.map((item, index) => (
+            <Link href={item.to} key={index}>
+              <li className='text-white transition duration-300 hover:text-red-500 active:text-red-500 cursor-pointer'>{item.link}</li>
+            </Link>
           ))}
         </ul>
         <p className='text-white flex md:hidden items-center'>Pacourir <MdArrowDropDown/></p>
