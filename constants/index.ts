@@ -15,19 +15,23 @@ export const logo = [
 export const navLinks = [
     {
         id: 1,
-        link : 'Home'
+        link : 'Home',
+        to: '/'
     },
     {
         id: 2,
-        link : 'Movies'
+        link : 'Movies',
+        to: '/movies',
     },
     {
         id: 3,
-        link : 'Tv'
+        link : 'Tv',
+        to: '/tv',
     },
     {
         id: 4,
-        link : 'Favorites'
+        link : 'Favorites',
+        to: '/favorites'
     },
 ];
 
