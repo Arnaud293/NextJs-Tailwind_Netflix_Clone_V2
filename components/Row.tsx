@@ -1,16 +1,16 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import { TrendingsDataMovies, TrendingsDataTv } from '../interfaces';
+import { TrendingsDataMovies, TrendingsDataTv, request } from '../interfaces';
 
 
-const Row = ({ fetchUrl, title }) => {
+const Row:React.FC<request> = ({ fetchUrl, title }) => {
 
   const [programs, setPrograms] = useState<TrendingsDataMovies[] | TrendingsDataTv[] | null>(null);
 
   useEffect(() => {
     const getData = async () => {
       const req  = await axios.get(fetchUrl);
-      const data: (TrendingsDataMovies| TrendingsDataTv)[] = req.data.results;
+      const data: TrendingsDataMovies[]| TrendingsDataTv[] = req.data.results;
       setPrograms(
         data.filter(el => el.backdrop_path !== null)
       )
