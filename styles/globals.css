@@ -24,7 +24,7 @@
 }
 @layer base {
     ::-webkit-scrollbar-thumb {
-       @apply bg-red-900;
+       @apply bg-red-700;
         border-radius: 8px;
         height: 8px;
         background-clip: content-box;
