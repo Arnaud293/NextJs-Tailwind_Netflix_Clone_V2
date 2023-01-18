@@ -8,5 +8,25 @@
     box-sizing: border-box;
     font-family: sans-serif;
     scroll-behavior: smooth;
-    /* background: rgb(27, 27, 27); */
+    
+    
+};
+@layer base {
+    ::-webkit-scrollbar{
+        padding: 15px;
+        height: 10px;
+    }
+}
+@layer base {
+    ::-webkit-scrollbar-track {
+        @apply bg-black;
+    };
+}
+@layer base {
+    ::-webkit-scrollbar-thumb {
+       @apply bg-red-900;
+        border-radius: 8px;
+        height: 8px;
+        background-clip: content-box;
+    };
 }
