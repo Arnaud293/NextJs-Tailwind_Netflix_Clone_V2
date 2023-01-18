@@ -1,5 +1,6 @@
 import requests from "./requests";
 
+// NAV LOGO
 export const logo = [
     {
       id: 1,
@@ -12,6 +13,7 @@ export const logo = [
     
 ];
 
+// NAV LINKS
 export const navLinks = [
     {
         id: 1,
@@ -35,6 +37,7 @@ export const navLinks = [
     },
 ];
 
+// DATA FOR HOME ROWS
 export const HomeRequests = [
     {
         title: 'Top 10 movies and TV shows :',
@@ -53,6 +56,9 @@ export const HomeRequests = [
         fetchUrl: requests.getTopRatedTvShow,
     }
 ]
+
+// DATA FOR MOVIES ROWS
+
 export const MoviesRequests = [
     
     {
@@ -64,6 +70,9 @@ export const MoviesRequests = [
         fetchUrl: requests.getTopRatedMovies,
     }
 ]
+
+// DATA FOR TV ROWS
+
 export const TvRequests = [
     
     {
@@ -74,4 +83,52 @@ export const TvRequests = [
         title: 'Top Rated TV shows now :',
         fetchUrl: requests.getTopRatedTvShow,
     }
+]
+// Footer static infos 
+
+export const FooterLinks = [
+    [
+        {
+            title : 'Audiodescription',
+        },
+        {
+            title: 'Investor Relations',
+        },
+        {
+            title: 'legal information',
+        }
+    ],
+    [
+        {
+            title : 'Help center',
+        },
+        {
+            title: 'Hiring',
+        },
+        {
+            title: 'Cookies preferences',
+        }
+    ],
+    [
+        {
+            title : 'Gift cards',
+        },
+        {
+            title: 'Conditions of use',
+        },
+        {
+            title: 'Legal Notice',
+        }
+    ],
+    [
+        {
+            title : 'Press',
+        },
+        {
+            title: 'Privacy',
+        },
+        {
+            title: 'Contact us',
+        }
+    ]
 ]
