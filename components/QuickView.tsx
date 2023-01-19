@@ -6,6 +6,25 @@ import Genres from './Genres';
 
 
 const QuickView:React.FC = ({ setDisplayQuickView, program}) => {
+
+  const handleFavorites = (e) => {
+    e.preventDefault();
+
+    let storedTv = window.localStorage.tv ? window.localStorage.tv.split(',') : [];
+    let storedMovies = window.localStorage.movies ? window.localStorage.movies.split(',') : [];
+
+    if(!storedMovies.includes(program.id.toString()) && program.title){
+      storedMovies.push(program.id);
+      window.localStorage.movies = storedMovies;
+      alert(`${program.title} is now added to your list!`)
+    }
+    else if(!storedTv.includes(program.id.toString()) && program.name){
+      storedTv.push(program.id);
+      window.localStorage.tv = storedTv;
+      alert(`${program.name} is now added to your list !`)
+    }
+  }
+
   return (
     <div className="fixed flex justify-center items-start backdrop-blur h-screen w-screen z-10 top-[100px] p-10">
       <div className="w-[60vw] h-[80vh] bg-gray-900 rounded-md relative">
@@ -24,7 +43,8 @@ const QuickView:React.FC = ({ setDisplayQuickView, program}) => {
               </button>
               <div className="flex gap-3">
                 <AiOutlinePlus size={40} className=
-                "text-white border border-white rounded-full bg-gray-900 bg-opacity-50 p-3 h-[60px] w-[60px] cursor-pointer hover:brightness-50" />
+                "text-white border border-white rounded-full bg-gray-900 bg-opacity-50 p-3 h-[60px] w-[60px] cursor-pointer hover:brightness-50"
+                onClick={(e) => handleFavorites(e)} />
                 <AiOutlineLike size={40} className=
                 "text-white border border-white rounded-full bg-gray-900 bg-opacity-50 p-3 h-[60px] w-[60px] cursor-pointer hover:brightness-50" />
               </div>
