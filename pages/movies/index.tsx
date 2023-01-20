@@ -1,9 +1,10 @@
+import { NextPage } from 'next'
 import React from 'react'
 import { Banner, Rows } from '../../components'
 
-type Props = {}
 
-const Movies = (props: Props) => {
+
+const Movies:NextPage = () => {
   return (
     <>
       <Banner />

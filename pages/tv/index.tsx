@@ -1,9 +1,10 @@
+import { NextPage } from 'next'
 import React from 'react'
 import { Banner, Rows } from '../../components'
 
-type Props = {}
 
-function index({}: Props) {
+
+const TvShows:NextPage = () => {
   return (
     <>
       <Banner />
@@ -12,4 +13,4 @@ function index({}: Props) {
   )
 }
 
-export default index
+export default TvShows
