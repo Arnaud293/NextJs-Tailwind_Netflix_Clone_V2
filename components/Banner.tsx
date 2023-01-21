@@ -20,7 +20,7 @@ const Banner:React.FC = () => {
     backgroundImage : `url("https://image.tmdb.org/t/p/original/${trending?.backdrop_path}")`,
     backgroundSize : "cover",
     backgroundPosition: "center",
-  }
+  };
 
   useEffect(() => {
     const getData = async () => {
