@@ -3,21 +3,29 @@ import React, {useEffect, useState} from 'react';
 import { TrendingsDataMovies, TrendingsDataTv, request } from '../interfaces';
 import QuickView from './QuickView';
 
-type UnionTrendingsData = TrendingsDataMovies | TrendingsDataTv;
-
 const Row:React.FC<request> = ({ fetchUrl, title }) => {
 
-  const [programs, setPrograms] = useState<UnionTrendingsData[] | null>(null);
+  const [programs, setPrograms] = useState<(TrendingsDataMovies | TrendingsDataTv)[] | null>(null);
   const [displayQuickView, setDisplayQuickView] = useState(false);
-  const [quickViewData, setQuickViewData] = useState<UnionTrendingsData[]>([]);
+  const [quickViewData, setQuickViewData] = useState<(TrendingsDataMovies | TrendingsDataTv)[]>([]);
 
   useEffect(() => {
     const getData = async () => {
       const req  = await axios.get(fetchUrl);
-      const data: (TrendingsDataMovies| TrendingsDataTv)[] = req.data.results;
+      let data: (TrendingsDataMovies | TrendingsDataTv)[] = req.data.results;
+      if (data.some((el) => 'title' in el && el.title)) {
+        data = data.map((el) => el as TrendingsDataMovies);
+      } 
+      else if (data.some((el) => 'name' in el && el.name)) {
+      data = data.map((el) => el as TrendingsDataTv);
+      }
+      
       setPrograms(
-        data.filter(el => el.backdrop_path !== null)
+        data
+        .filter(el => el.backdrop_path !== null)
       )
+      
+      
     }
     getData()
   },[]);
@@ -25,9 +33,10 @@ const Row:React.FC<request> = ({ fetchUrl, title }) => {
   const handleQuickView = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     displayQuickView ? setDisplayQuickView(false) : setDisplayQuickView(true);
     
-    const data: UnionTrendingsData[] = (programs || [])?.filter(program =>
+    const data: (TrendingsDataMovies | TrendingsDataTv)[] = (programs || [])?.filter(program =>
     program.backdrop_path === e.target.src.split('https://image.tmdb.org/t/p/original/').join(""));
     setQuickViewData(data);
+    console.log(e.target.src);
   }
 
 
