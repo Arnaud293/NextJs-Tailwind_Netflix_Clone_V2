@@ -1,6 +1,11 @@
 import React from 'react';
+import { TrendingsDataMovies, TrendingsDataTv } from '../interfaces';
 
-const Genres:React.FC = ({ program }) => {
+interface Props {
+    program: (TrendingsDataMovies | TrendingsDataTv),
+}
+
+const Genres:React.FC<Props> = ({ program }) => {
     let genreArr:Array<String> = [];
     const findGenre = () => {
         for (let i = 0; i < program.genre_ids.length; i++){
