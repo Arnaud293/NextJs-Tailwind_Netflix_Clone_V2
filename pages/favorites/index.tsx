@@ -5,12 +5,12 @@ import { DetailsDataMovies, DetailsDataTv } from '../../interfaces';
 
 const Favorites:NextPage = ({}) => {
 
-  const [storedDataMovies, setStoredDataMovies] = useState<DetailsDataMovies[] | null>([]);
-  const [storedDataTv, setStoredDataTv] = useState<DetailsDataTv[] | null> ([]);
+  const [storedDataMovies, setStoredDataMovies] = useState<(DetailsDataMovies)[]>([]);
+  const [storedDataTv, setStoredDataTv] = useState<(DetailsDataTv)[]> ([]);
 
   // Get stored movies
   useEffect(() => {
-      let moviesArr:DetailsDataMovies[];
+      let moviesArr:DetailsDataMovies[] = [];
       let moviesId = window.localStorage.movies ? window.localStorage.movies.split(',') : [];
       for (let i=0; i < moviesId.length; i++){
           axios.get(`https://api.themoviedb.org/3/movie/${moviesId[i]}?api_key=ed82f4c18f2964e75117c2dc65e2161d`)
@@ -20,13 +20,15 @@ const Favorites:NextPage = ({}) => {
   },[])
   // Get stored Tv shows
   useEffect(() => {
-      let tvArr:DetailsDataTv[];
+      let tvArr:DetailsDataTv[] = [];
       let tvId = window.localStorage.tv ? window.localStorage.tv.split(',') : [];
       for (let i=0; i < tvId.length; i++){
           axios.get(`https://api.themoviedb.org/3/tv/${tvId[i]}?api_key=ed82f4c18f2964e75117c2dc65e2161d`)
           .then(res => tvArr.push(res.data))
           .then(() => setStoredDataTv(tvArr));    
       }
+      console.log(setStoredDataTv);
+      
   },[])
   // Delete from favorites
   const handleDeleteFavoritesMovies = () => {
@@ -53,13 +55,15 @@ const Favorites:NextPage = ({}) => {
   return (
     <div className='h-screen bg-gray-900 text-white py-20'>
       <div className="">
-        {storedDataMovies?.length ? (
-          storedDataMovies.map((movie) => {
+        {storedDataMovies?.length 
+        ? (
+          storedDataMovies.map((movie) => (
             <div>
               <img src={movie.backdrop_path} alt={movie.title} />
             </div>
-          })
-        ):(
+          ))
+        )
+        :(
           <h2>No favorites movies</h2>
         )}
       </div>
