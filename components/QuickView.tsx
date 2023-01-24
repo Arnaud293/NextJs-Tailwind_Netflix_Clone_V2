@@ -10,7 +10,7 @@ interface Props {
   setDisplayQuickView:  (newValue: boolean) => void,
   displayQuickView: boolean
 }
-const QuickView:React.FC<Props> = ({ setDisplayQuickView, program}) => {
+const QuickView:React.FC<Props> = ({ setDisplayQuickView, program, displayQuickView}) => {
 
   const handleFavorites = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     e.preventDefault();

@@ -36,13 +36,12 @@ const Row:React.FC<request> = ({ fetchUrl, title }) => {
     const data: (TrendingsDataMovies | TrendingsDataTv)[] = (programs || [])?.filter(program =>
     program.backdrop_path === e.target.src.split('https://image.tmdb.org/t/p/original/').join(""));
     setQuickViewData(data);
-    console.log(e.target.src);
   }
 
 
   return (
     <>
-    {displayQuickView && <QuickView program={quickViewData[0]} setDisplayQuickView={setDisplayQuickView} />}
+    {displayQuickView && <QuickView program={quickViewData[0]} setDisplayQuickView={setDisplayQuickView} displayQuickView={displayQuickView} />}
     <div className='p-4 overflow-x-hidden'>
         <h2 className='text-white text-2xl font-semibold'>{title}</h2>
         <div className="w-full flex overflow-x-scroll gap-2 mt-2 py-2">
