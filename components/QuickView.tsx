@@ -3,11 +3,16 @@ import { BsPlayFill } from 'react-icons/bs';
 import { RxCross1 } from 'react-icons/rx';
 import { AiOutlinePlus, AiOutlineLike } from 'react-icons/ai';
 import Genres from './Genres';
+import { TrendingsDataMovies, TrendingsDataTv } from '../interfaces';
 
+interface Props {
+  program: (TrendingsDataMovies | TrendingsDataTv),
+  setDisplayQuickView:  (newValue: boolean) => void,
+  displayQuickView: boolean
+}
+const QuickView:React.FC<Props> = ({ setDisplayQuickView, program}) => {
 
-const QuickView:React.FC = ({ setDisplayQuickView, program}) => {
-
-  const handleFavorites = (e) => {
+  const handleFavorites = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     e.preventDefault();
 
     let storedTv = window.localStorage.tv ? window.localStorage.tv.split(',') : [];
