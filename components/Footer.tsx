@@ -17,23 +17,23 @@ const Footer:React.FC = ({}: Props) => {
       </div>
       <div className="w-[70%] text-gray-500 grid grid-cols-1 justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-2 gap-4">
         <ul className='flex flex-col gap-3'>
-          {FooterLinks[0].map((link) => (
-            <li className='cursor-pointer hover:underline'>{link.title}</li>
+          {FooterLinks[0].map((link, index) => (
+            <li key={index} className='cursor-pointer hover:underline'>{link.title}</li>
           ))}
         </ul>
         <ul className='flex flex-col gap-3'>
-        {FooterLinks[1].map((link) => (
-            <li className='cursor-pointer hover:underline'>{link.title}</li>
+        {FooterLinks[1].map((link, index) => (
+            <li key={index} className='cursor-pointer hover:underline'>{link.title}</li>
           ))}
         </ul>
         <ul className='flex flex-col gap-3'>
-        {FooterLinks[2].map((link) => (
-            <li className='cursor-pointer hover:underline'>{link.title}</li>
+        {FooterLinks[2].map((link, index) => (
+            <li key={index} className='cursor-pointer hover:underline'>{link.title}</li>
           ))}
         </ul>
         <ul className='flex flex-col gap-3'>
-        {FooterLinks[3].map((link) => (
-            <li className='cursor-pointer hover:underline'>{link.title}</li>
+        {FooterLinks[3].map((link, index) => (
+            <li key={index} className='cursor-pointer hover:underline'>{link.title}</li>
           ))}
         </ul>
       </div>

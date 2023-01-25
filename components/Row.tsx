@@ -46,7 +46,7 @@ const Row:React.FC<request> = ({ fetchUrl, title }) => {
         <h2 className='text-white text-2xl font-semibold'>{title}</h2>
         <div className="w-full flex overflow-x-scroll gap-2 mt-2 py-2">
             {programs?.slice(0,10).map((program, index) => (
-                <img src={`https://image.tmdb.org/t/p/original/${program?.backdrop_path}`}
+                <img key={index} src={`https://image.tmdb.org/t/p/original/${program?.backdrop_path}`}
                 alt={program?.title || program?.name}
                 className='w-[200px] h-[120px] rounded-sm cursor-pointer hover:scale-105' 
                 onClick={(e) => handleQuickView(e)}/>
