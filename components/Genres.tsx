@@ -96,6 +96,7 @@ const Genres:React.FC<Props> = ({ program }) => {
         }
         return genreArr.map((genre, index) => <li key={index} className='p-3 border'>{genre}</li>);
     }
+    
   return (
     <ul className='flex gap-4 flex-wrap'>
         {program.genre_ids ? findGenre() : "No genre found for this program"}

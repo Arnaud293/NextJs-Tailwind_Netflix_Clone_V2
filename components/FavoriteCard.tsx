@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { SetStateAction, useState } from 'react';
 import { BsFillTrashFill } from 'react-icons/bs';
 import { DetailsDataMovies, DetailsDataTv } from '../interfaces';
 
 interface Props {
-    program: DetailsDataMovies & DetailsDataTv,
-    storedDataMovies: (DetailsDataMovies)[] ,
+    program: DetailsDataMovies | DetailsDataTv,
+    storedDataMovies: (DetailsDataMovies)[],
     storedDataTv: (DetailsDataTv)[],
 }
 

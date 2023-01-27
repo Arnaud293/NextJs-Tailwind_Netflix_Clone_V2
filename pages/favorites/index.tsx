@@ -3,6 +3,8 @@ import { NextPage } from 'next';
 import React, { useState, useEffect } from 'react';
 import { DetailsDataMovies, DetailsDataTv } from '../../interfaces';
 
+import { FavoriteCard } from '../../components';
+
 const Favorites:NextPage = ({}) => {
 
   const [storedDataMovies, setStoredDataMovies] = useState<(DetailsDataMovies)[]>([]);
@@ -35,54 +37,27 @@ const Favorites:NextPage = ({}) => {
     }
     getFavoritesTv();
   },[])
-  // Delete from favorites
-  const handleDeleteFavoritesMovies = () => {
-      let storedData:Array<number> = window.localStorage.movies.split(',');
-      if(storedData?.length){
-        for(let i = 0; i< storedData?.length; i++){
-          let newData = storedData?.filter((id) => id != storedDataMovies[i].id );
-          window.localStorage.movies= newData;
-          window.location.reload();
-        }
-      }
-  }
-  const handleDeleteFavoritesTv = () => {
-      let storedData:Array<number> = window.localStorage.tv.split(',');
-      if(storedData?.length){
-        for(let i = 0; i< storedData.length; i++){
-        let newData = storedData.filter((id) => id != storedDataTv[i].id );
-        window.localStorage.tv= newData;
-        window.location.reload();
-        }
-      }
-  }
-
+ 
   return (
-    <div className='h-screen bg-gray-900 text-white py-20 flex flex-col items-center'>
-      <h1>Favorites Tv Shows</h1>
-      <div className="flex">
+    <div className='h-fit min-h-screen bg-gray-900 text-white py-20 flex flex-col items-center p-5'>
+      <h1 className='text-3xl border-b p-2 mb-4'>Favorites Tv Shows 🍿💗</h1>
+      <div className="flex gap-4 flex-wrap w-full justify-center">
         {storedDataTv?.length 
         ? (
           storedDataTv.map((show) => (
-            <div>
-              <img src={`https://image.tmdb.org/t/p/original/${show.backdrop_path}`} alt={show.title}
-              className="w-[300px] h-[225px] object-cover" />
-            </div>
+            <FavoriteCard program={show} key={show.id} storedDataTv={storedDataTv} {...setStoredDataTv} />
           ))
         )
         :(
           <h2>No favorites tv shows</h2>
         )}
       </div>
-      <h1>Favorites Movies</h1>
-      <div className="flex">
+      <h1 className='text-3xl border-b p-2 mb-4'>Favorites Movies 🎬💗</h1>
+      <div className="flex gap-4 flex-wrap">
         {storedDataMovies?.length 
           ? (
             storedDataMovies.map((movie) => (
-              <div>
-                <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title} 
-                className="w-[300px] h-[225px] object-cover"/>
-              </div>
+              <FavoriteCard program={movie} key={movie.id} storedDataMovies={storedDataMovies} {...setStoredDataMovies}  />
             ))
           )
           :(
