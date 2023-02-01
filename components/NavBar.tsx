@@ -13,6 +13,7 @@ type Props = {}
 const NavBar:React.FC = ({}: Props) => {
 
   const [blackNavBar, setBlackNavBar] = useState(false);
+  const [navPopup, setNavPopup] = useState(false);
     
   const navColorTransition = () => {
     window.scrollY >= 50 ? setBlackNavBar(true) : setBlackNavBar(false);
@@ -34,12 +35,23 @@ const NavBar:React.FC = ({}: Props) => {
             </Link>
           ))}
         </ul>
-        <p className='text-white flex md:hidden items-center'>Pacourir <MdArrowDropDown/></p>
+        <div className="relative">
+          <p onClick={() => setNavPopup(!navPopup)} className='text-white flex md:hidden items-center'>Pacourir <MdArrowDropDown/></p>
+          {navPopup && (
+          <ul className='flex flex-col absolute top-5 bg-black p-3 w-[120px] bg-opacity-80 -left-3'>
+            {navLinks.map((item, index) => (
+            <Link href={item.to} key={index}>
+              <li className='text-white transition duration-300 hover:text-red-500 active:text-red-500 cursor-pointer'>{item.link}</li>
+            </Link>
+          ))}
+          </ul>
+        )}
+        </div>
       </div>
       <div className="flex w-[50%] items-center gap-4 justify-end">
         <AiOutlineSearch size={25} style={{color: "white"}}/>
-        <BsBell size={25} style={{color: "white"}}/>
-        <img src="/miniature.png" alt="profil-picture" className='h-[35px] rounded-md'/>
+        <BsBell size={25} style={{color: "white"}} className="sm:block hidden"/>
+        <img src="/miniature.png" alt="profil-picture" className='h-[35px] rounded-md sm:block hidden'/>
       </div>
     </nav>
   )
