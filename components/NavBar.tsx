@@ -7,22 +7,39 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { MdArrowDropDown } from 'react-icons/md';
 
 import Link from 'next/link';
+import axios from 'axios';
+import requests from '../constants/requests';
 
-type Props = {}
 
-const NavBar:React.FC = ({}: Props) => {
+
+const NavBar:React.FC = ({result, setResult}) => {
 
   const [blackNavBar, setBlackNavBar] = useState(false);
   const [displaySearchBar, setDisplaySearchBar] = useState(false);
   const [navPopup, setNavPopup] = useState(false);
+  
     
   const navColorTransition = () => {
     window.scrollY >= 50 ? setBlackNavBar(true) : setBlackNavBar(false);
   };
 
+  const getSearchedData = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    await axios.get(requests.getMultiSearchList + `&query=?${e.target.value}&language=en-EN`)
+    .then((res) => setResult(res.data.results
+      .filter(el => el.media_type == "movie" && el.backdrop_path !== null|| el.media_type == "tv" && el.backdrop_path !== null)));
+    
+  }
+
+  const handleSearchBar = () => {
+    setDisplaySearchBar(!displaySearchBar);
+    if(displaySearchBar === false){
+      setResult('');
+    }
+  }
+
   useEffect(() => {
     window.addEventListener('scroll', navColorTransition);
-},[]);
+  },[]);
 
   return (
     <nav className={`flex justify-between p-2 fixed backdrop:blur-1  ${blackNavBar ? "bg-black" : "bg-gradient-to-t from-black to-transparent"} w-full z-10`}>
@@ -51,9 +68,10 @@ const NavBar:React.FC = ({}: Props) => {
       </div>
       <div className="flex w-[50%] items-center gap-4 justify-end">
         {displaySearchBar && (
-          <input type="text" className='w-[90px] border border-white bg-black text-white p-1 text-sm' placeholder='Search here' />
+          <input type="text" className='w-[90px] border border-white bg-black text-white p-1 text-sm' placeholder='Search here'
+          onChange={(e) => getSearchedData(e)} />
         )}
-        <AiOutlineSearch size={25} style={{color: "white"}} onClick={() => setDisplaySearchBar(!displaySearchBar)}/>
+        <AiOutlineSearch size={25} style={{color: "white"}} onClick={handleSearchBar}/>
         <BsBell size={25} style={{color: "white"}} className="sm:block hidden"/>
         <img src="/miniature.png" alt="profil-picture" className='h-[35px] rounded-md sm:block hidden'/>
       </div>
