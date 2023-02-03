@@ -33,7 +33,7 @@ const QuickView:React.FC<Props> = ({ setDisplayQuickView, program, displayQuickV
   return (
     <div className="fixed flex justify-center items-start backdrop-blur h-screen w-screen z-10 top-[100px] p-10">
       <div className="w-[60vw] h-[80vh] bg-gray-900 rounded-md relative">
-        <RxCross1 size={30} onClick={() => setDisplayQuickView(false)} className='text-white absolute right-1 top-1 z-10'/>
+        <RxCross1 size={30} onClick={() => setDisplayQuickView(false)} className='text-white absolute right-1 top-1 z-10 cursor-pointer hover:text-gray-200'/>
         <div className="w-full h-4/6 relative">
           <img src={`https://image.tmdb.org/t/p/original/${program?.backdrop_path}`} alt="" className='h-full w-full object-cover object-top' />
           <div className="absolute w-full h-full flex flex-col justify-center ml-2 sm:ml-4 sm:p-2 top-0">
