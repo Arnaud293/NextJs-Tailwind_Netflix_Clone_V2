@@ -12,6 +12,7 @@ import requests from '../constants/requests';
 
 
 
+
 const NavBar:React.FC = ({result, setResult}) => {
 
   const [blackNavBar, setBlackNavBar] = useState(false);
@@ -30,10 +31,10 @@ const NavBar:React.FC = ({result, setResult}) => {
     
   }
 
-  const handleSearchBar = () => {
+  const handleSearchBar = async () => {
     setDisplaySearchBar(!displaySearchBar);
     if(displaySearchBar === false){
-      setResult('');
+      await setResult('');
     }
   }
 

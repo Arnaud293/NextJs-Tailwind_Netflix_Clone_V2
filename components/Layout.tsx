@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import 'tailwindcss/tailwind.css';
 import { NavBar, Footer, SearchResult } from './';
 
@@ -9,6 +9,7 @@ type ChildrenProps = {
 const Layout:React.FC<ChildrenProps> = ({children}) => {
   const [searchedResults, setSearchedResults] = useState('');
   console.log(searchedResults);
+
   return (
     <>
         <NavBar result={searchedResults} setResult={setSearchedResults} />

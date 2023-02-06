@@ -5,3 +5,4 @@ export { default as Rows } from './Rows';
 export { default as QuickView } from './QuickView';
 export { default as Footer } from './Footer';
 export {default as FavoriteCard} from './FavoriteCard';
+export {default as SearchResult} from './SearchResult';
